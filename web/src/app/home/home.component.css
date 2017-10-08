@@ -1,0 +1,16 @@
+.main-root {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.step{
+    font-size: 18px;
+}
+.content{
+    margin-top:20px;
+    margin-left: 50px;
+}
+.pre-code{
+    position: relative;
+    bottom: 46px;
+}

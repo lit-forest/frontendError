@@ -1,0 +1,9 @@
+.main-root {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mat-table {
+    font-family: -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif;
+}

@@ -1,0 +1,1 @@
+let a = db.createUser({ user: "mello", pwd: "463634583zxtdd", roles: [{ role: "readWrite", db: "frontenderr" }] })

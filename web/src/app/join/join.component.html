@@ -1,0 +1,25 @@
+<div class="main-root">
+  <h1 class='title'>Join</h1>
+  <form [formGroup]="joinForm" (ngSubmit)='handleJoin(joinForm.value)' class="form-join">
+    <div class="form-item">
+      <label for="user_email" class="form-label">Email address</label>
+      <input type="email" class="form-control" name='email' formControlName='email'>
+      <div class='warn-label' *ngIf="!joinForm.controls['email'].valid && joinForm.controls['email'].touched">Please enter a valid email address.</div>
+    </div>
+    <div class="form-item">
+      <label for="user_name" class="form-label">Username <span class="text-secondary">(only letters, numbers, and underscores)</span> </label>
+      <input type="text" class="form-control" name='username' formControlName='username'>
+      <div class='warn-label' *ngIf="isRegistered">This account has been registered</div>
+    </div>
+    <div class="form-item">
+      <label for="user_password" class="form-label">Password <span class='text-secondary'>(min. 6 char)</span></label>
+      <input type="password" class="form-control" name='password' formControlName='password'>
+    </div>
+    <div class="form-item">
+      <input type="submit" value="join" class="btn btn-default" [disabled]="!joinForm.valid" [ngClass]="{'sunmit-disabled':!joinForm.valid}">
+    </div>
+  </form>
+  <div class="sheet sheet--padding-small text-center">
+    <h3 class="epsilon">Already joined?<a routerLink="/login" routerLinkActive="active" class="header-nav-ul-li-a">Login</a></h3>
+  </div>
+</div>

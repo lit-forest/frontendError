@@ -1,0 +1,17 @@
+{
+  "/api/*": {
+    "target": "http://localhost:3333",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/user/*": {
+    "target": "http://localhost:3333",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/project/*": {
+    "target": "http://localhost:3333",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

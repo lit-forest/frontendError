@@ -1,0 +1,42 @@
+<div class="main-root">
+  <md-table #table [dataSource]="dataSource">
+
+    <ng-container mdColumnDef="fileName">
+      <md-header-cell *mdHeaderCellDef>fileName</md-header-cell>
+      <md-cell *mdCellDef="let row"> {{row.filename}} </md-cell>
+    </ng-container>
+
+    <ng-container mdColumnDef="error">
+      <md-header-cell *mdHeaderCellDef>error</md-header-cell>
+      <md-cell *mdCellDef="let row"> {{row.error}} </md-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container mdColumnDef="source">
+      <md-header-cell *mdHeaderCellDef>source</md-header-cell>
+      <md-cell *mdCellDef="let row"> {{row.sourceFile}} </md-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container mdColumnDef="line,column">
+      <md-header-cell *mdHeaderCellDef>line,column</md-header-cell>
+      <md-cell *mdCellDef="let row"> {{row.linCol}} </md-cell>
+    </ng-container>
+
+    <ng-container mdColumnDef="userAgent">
+      <md-header-cell *mdHeaderCellDef>userAgent</md-header-cell>
+      <md-cell *mdCellDef="let row"> {{row.userAgent}} </md-cell>
+    </ng-container>
+
+    <ng-container mdColumnDef="datetime">
+        <md-header-cell *mdHeaderCellDef>datetime</md-header-cell>
+        <md-cell *mdCellDef="let row"> {{row.datetime | date : 'medium'}} </md-cell>
+      </ng-container>
+
+    <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *mdRowDef="let row; columns: displayedColumns;" mdTooltip={{row.stackTrace}} mdTooltipPosition='below'></md-row>
+  </md-table>
+
+  <md-paginator #paginator [length]="errInfos.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </md-paginator>
+</div>

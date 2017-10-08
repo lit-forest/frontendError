@@ -1,0 +1,20 @@
+<div class="main-root">
+    <h1 class='title'>Login</h1>
+    <form [formGroup]="loginForm" (ngSubmit)='handleLogin(loginForm.value)' class="form-join">
+        <div class="form-item">
+            <label for="user_name" class="form-label">Username</label>
+            <input type="text" class="form-control" name='username' formControlName='username'>
+        </div>
+        <div class="form-item">
+            <label for="user_password" class="form-label">Password</label>
+            <input type="password" class="form-control" name='password' formControlName='password'>
+            <div class='warn-label' *ngIf="passwordErr">Invalid username or password.</div>
+        </div>
+        <div class="form-item">
+            <input type="submit" value="Login" class="btn btn-default" [disabled]="!loginForm.valid" [ngClass]="{'sunmit-disabled':!loginForm.valid}">
+        </div>
+    </form>
+    <div class="sheet sheet--padding-small text-center">
+        <h3 class="epsilon">Don't have an account?<a routerLink="/join" routerLinkActive="active" class="header-nav-ul-li-a">Join</a></h3>
+    </div>
+</div>

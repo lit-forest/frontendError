@@ -1,0 +1,79 @@
+<div class="collections">
+  <div class="col-header">
+    <h1 class="user-name">{{username}}</h1>
+    <div class='new'>
+      <div class="new-col" (click)='showNewFrom()'>
+        <span>
+          <svg class="new-icon" version="1.1" viewBox="0 0 32 32" width="32" height="32" aria-hidden="false">
+            <path d="M31.2 12.8h-2.4v-2.4c0-.4-.4-.8-.8-.8h-1.6c-.4 0-.8.4-.8.8v2.4h-2.4c-.4 0-.8.4-.8.8v1.6c0 .4.4.8.8.8h2.4v2.4c0 .4.4.8.8.8h1.6c.4 0 .8-.4.8-.8v-2.4h2.4c.4 0 .8-.4.8-.8v-1.6c0-.4-.4-.8-.8-.8zm-15.2 5.1v-1.2c1.9-1.1 3.2-3.1 3.2-5.5v-1.6c0-3.5-2.9-6.4-6.4-6.4s-6.4 2.9-6.4 6.4v1.6c0 2.4 1.3 4.4 3.2 5.5v1.2c-5.5.9-9.6 4-9.6 7.7v1.6c0 .9.7 1.6 1.6 1.6h22.4c.9 0 1.6-.7 1.6-1.6v-1.6c0-3.7-4.1-6.8-9.6-7.7z"></path>
+          </svg>
+            New
+          </span>
+      </div>
+      <div class="newFrom" *ngIf='isShowNewForm'>
+        <div class="arrow"></div>
+        <form [formGroup]='newProjectForm' (ngSubmit)='handleNewProject(newProjectForm.value)' class="newFrom-content">
+          <div class="form-item">
+            <label for="project_name" class="form-label">Project Name</label>
+            <input type="text" class="form-control" formControlName='pName'>
+            <div class='warn-label' *ngIf="isHavePro">This project has been created</div>
+          </div>
+          <div class="form-item">
+            <label for="project_director" class="form-label">Project Director</label>
+            <input type="text" class="form-control" formControlName='pDirector'>
+          </div>
+          <div class="form-item">
+            <input type="submit" value="Save" class="btn-save"  [disabled]="!newProjectForm.valid" [ngClass]="{'btn-disabled':!newProjectForm.valid}">
+            <input type="button" value="cancel" (click)='showNewFrom()' class="btn-cancel">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="main-root">
+  <div *ngFor="let col of collections;let i = index" class="root-animation">
+    <div class='place-holder'>
+      <img src={{imgs[i]}} alt="background" class="place-holder-img">
+    </div>
+    <div class='container'>
+      <a class='file-info'>
+        <div class='file-info-date'>{{col.updateTime | date : mediumDate}}</div>
+        <span class='file-info-name' (click)='linkToProDetails(col)'>{{col.pName}}</span>
+        <p class='file-info-id'>{{col.pId}}</p>
+      </a>
+      <div class="file-upload-container" >
+        <img src="../../assets/fileUpload.png" alt="fileUpload" (click)='showFileUpload(col)'>
+        <div class="newFrom" *ngIf='col.showFileUpload'>
+          <div class="arrow fileUpload-arrow"></div>
+          <form [formGroup]='fileUploadForm' (ngSubmit)='handleFileUpload(col)' class="newFrom-content fileUpload-form">
+            <label for="" class="form-label">Project SourceMap</label>
+            <input type="text" class="form-control file-list" formControlName='hello'>
+            <label for="" class="browse">Browse</label>
+            <input type="file" name='fileUpaload' multiple accept=".map" class="file-upload" formControlName='fileUpaload' #fileUpaload (change)='fileUploadChange()'>
+            <div class="form-item">
+              <input type="submit" value="Save" class="btn-save" [disabled]="!fileUploadForm.valid" [ngClass]="{'btn-disabled':!fileUploadForm.valid}">
+              <input type="button" value="cancel" (click)='showFileUpload(col)' class="btn-cancel">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class='author-info'>
+        <span class='author-info-container'>
+          <span class='author-info-avatar'>
+              <a class='author-info-avatar-link'>
+              <img class='author-info-avatar-img' alt='user avatar' src='https://images.unsplash.com/placeholder-avatars/extra-large.jpg?dpr=1&auto=compress,format&fit=crop&w=64&h=64&q=80&cs=tinysrgb&crop=faces&bg=fff' />
+              </a>
+          </span>
+          <div class='author-info-name'>
+            <a class='author-info-name-link'>{{col.pDirector}}</a>
+          </div>
+        </span>
+      </div>
+      <div class="delete-project">
+        <img src="../../assets/delete.png" alt="delete project" (click)='deleteProject(col)'>
+      </div>
+    </div>
+  </div>
