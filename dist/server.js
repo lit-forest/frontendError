@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const config_1 = require("./config");
 const user_1 = require("./routes/user");
 const project_1 = require("./routes/project");
+const error_1 = require("./routes/error");
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,6 +25,7 @@ app.use(session({
 app.use(express.static(path.join(__dirname, '..', 'web/dist')));
 app.use('/user', user_1.default);
 app.use('/project', project_1.default);
+app.use('/err', error_1.default);
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '..', 'web/dist/index.html'));
 });

@@ -3,7 +3,7 @@ import * as mongoose from "mongoose";
 
 import User from '../models/User';
 
-const router = new Router();
+const router = Router();
 
 // 注册
 router.post('/join', (req: Request, res: Response) => {

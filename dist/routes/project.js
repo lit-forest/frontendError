@@ -7,7 +7,7 @@ const uuidv4 = require("uuid/v4");
 const multer = require("multer");
 const User_1 = require("../models/User");
 const Projects_1 = require("../models/Projects");
-const router = new express_1.Router();
+const router = express_1.Router();
 // 根据项目id查询错误日志
 router.post('/getErrInfosByProId', (req, res) => {
     let proId = req.body, data;

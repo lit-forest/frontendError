@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const User_1 = require("../models/User");
-const router = new express_1.Router();
+const router = express_1.Router();
 // 注册
 router.post('/join', (req, res) => {
     let newUser = Object.assign(req.body, { projects: [] }), username = newUser.username;

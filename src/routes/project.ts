@@ -8,7 +8,7 @@ import * as multer from 'multer';
 import User from '../models/User';
 import ProjectErrors from '../models/Projects';
 
-const router = new Router();
+const router = Router();
 
 // 根据项目id查询错误日志
 router.post('/getErrInfosByProId', (req: Request, res: Response) => {

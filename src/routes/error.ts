@@ -7,7 +7,7 @@ import * as sourceMap from 'source-map';
 
 import ProjectErrors from '../models/Projects';
 
-const router = new Router();
+const router = Router();
 
 router.post('/sendErrInfo', (req: Request, res: Response) => {
     // 允许跨域
